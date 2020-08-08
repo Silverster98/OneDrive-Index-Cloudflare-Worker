@@ -70,3 +70,8 @@ footer a {
   font-size: 0.88rem;
   color: #999;
 }
+
+.path a {
+  text-decoration: none;
+  color: #333;
+}
