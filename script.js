@@ -51,3 +51,27 @@ document.addEventListener("DOMContentLoaded", function () {
 import "https://cdn.jsdelivr.net/npm/marked/marked.min.js"
 
 renderReadme().catch(console.error)
+
+function generatePath(path) {
+
+    const el = (tag, attrs, content) => `<${tag} ${attrs.join(" ")}>${content}</${tag}>`;
+    const div = (className, content) => el("div", [`class="${className}"`], content);
+
+    let items = path.split('/')
+    let link = ['']
+    let els = []
+
+    let i = 0
+    for (; i < items.length - 1; i++) {
+        link.push(link[i] + items[i] + '/')
+        els.push(el('a', [`href="${link[i+1]}"`], items[i] == '' ? '🚩 Home' : decodeURI(items[i])))
+    }
+    // if (items[i] !== '') link.push(link[i] + items[i])
+
+    if (items[i] !== '') els.push(decodeURI(items[i]))
+
+    // console.log(els)
+    return div('path', els.join(' / '))
+}
+
+document.getElementsByClassName('container')[0].insertAdjacentHTML('afterbegin', generatePath(window.location.pathname))
