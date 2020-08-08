@@ -4,6 +4,20 @@
     if(!resp.ok) return
     document.querySelector(".container").insertAdjacentHTML('beforeend','<div class="readme">'+window.marked(await resp.text()) + "</div>")
     Prism.highlightAll()
+
+    // latex math render
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$']]
+        }
+    }
+    
+    (function () {
+      var script = document.createElement('script')
+      script.src = "https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"
+      script.async = true
+      document.head.appendChild(script)
+    })()
  }
 
 
