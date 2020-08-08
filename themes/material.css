@@ -64,3 +64,9 @@ footer a {
   margin-top: 3rem;
   font-size: 0.875rem;
 }
+
+.path {
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  color: #999;
+}
